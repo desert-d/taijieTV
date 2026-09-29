@@ -201,10 +201,17 @@ public class MainActivity extends AppCompatActivity {
             QbSdk.unForceSysWebView();
             canLoadX5 = QbSdk.canLoadX5(this);
             if (!canLoadX5) {
-                Toast.makeText(this, "X5 内核未就绪，返回安装流程", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(this, BootActivity.class));
-                finish();
-                return false;
+                // 只允许回引导页重试有限次，否则会形成"主界面↔引导页"死循环
+                if (TvApp.canRetryInstall(this)) {
+                    Toast.makeText(this, "X5 内核未就绪，返回安装流程", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, BootActivity.class));
+                    finish();
+                    return false;
+                }
+                // 重试次数用尽：改用系统内核，让用户至少能看，并在设置里可重试
+                QbSdk.forceSysWebView();
+                canLoadX5 = false;
+                Toast.makeText(this, "X5 内核未就绪，暂用系统内核（可能无法播放）\n可在设置里重试安装", Toast.LENGTH_LONG).show();
             }
         } else {
             QbSdk.forceSysWebView();

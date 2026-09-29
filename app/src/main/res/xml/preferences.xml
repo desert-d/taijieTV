@@ -12,7 +12,12 @@
         <Preference
             android:key="core_info"
             android:summary="--"
-            android:title="当前内核" />
+            android:title="内核诊断" />
+
+        <Preference
+            android:key="retry_core"
+            android:summary="重置重试次数，重新走一遍内核安装流程（会重启应用）"
+            android:title="重新安装 X5 内核" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="画质">
@@ -52,7 +57,7 @@
 
         <Preference
             android:key="version"
-            android:summary="1.1.0"
+            android:summary="1.2.0"
             android:title="版本" />
 
         <Preference

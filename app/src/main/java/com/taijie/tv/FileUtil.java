@@ -15,7 +15,12 @@ public final class FileUtil {
 
     /** 内核包存放目录（应用私有目录，4.4 上不需要任何存储权限） */
     public static File tbsDir(Context c) {
-        return c.getExternalFilesDir("TBSFile");
+        File dir = c.getExternalFilesDir("TBSFile");
+        if (dir == null) {
+            // 没有挂载外置存储时退回内部存储，避免拼出 "null/xxx"
+            dir = new File(c.getFilesDir(), "TBSFile");
+        }
+        return dir;
     }
 
     /** 内核包完整路径 */

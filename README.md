@@ -1,4 +1,4 @@
-# 泰捷电视直播 v1.1.0（WE30C 深度定制版）
+# 泰捷电视直播 v1.2.0（WE30C 深度定制版）
 
 基于 [CCTV_Viewer](https://github.com/Eanya-Tonic/CCTV_Viewer) 重写，针对 **泰捷 WE30C（RK3229 四核 Cortex-A7 / Mali-400 / 1GB 内存 / Android 4.4.4 / 32 位）** 精简适配。
 
@@ -6,7 +6,7 @@
 
 ```bash
 ./gradlew assembleDebug     # 需 JDK 17 + compileSdk 32
-# 产物：app/build/outputs/apk/debug/泰捷电视直播_v1.1.0.apk
+# 产物：app/build/outputs/apk/debug/泰捷电视直播_v1.2.0.apk
 ```
 
 X5 内核包已内置在 `app/src/main/assets/045738_x5.tbs.apk`（32 位版，适配 RK3229），
@@ -17,7 +17,9 @@ X5 内核包已内置在 `app/src/main/assets/045738_x5.tbs.apk`（32 位版，�
 1. 卸载旧版（不同来源的包签名不同，覆盖安装会失败）。
 2. 盒子 → 设置 → 安全 → 打开「未知来源」，或用 `adb install`。
 3. **首次打开会停在引导页 1–3 分钟**装 X5 内核（RK3229 解包 + dexopt 慢），别断电。
-   超过 90 秒会自动放行并改用系统内核，不会卡死。
+   装完会**自动重启一次应用**来加载内核（这是 X5 的硬性要求），属正常现象。
+   超过 4 分钟会自动放行并改用系统内核，不会卡死。
+4. 若提示"X5 内核未就绪"：进 **设置 → 内核诊断** 查看原因，或用 **重新安装 X5 内核** 重试。
 
 ## 三、遥控器键位
 

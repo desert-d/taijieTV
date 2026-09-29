@@ -10,8 +10,8 @@ android {
         applicationId "com.taijie.tv"
         minSdk 19              // Android 4.4.4 = API 19，WE30C 的系统版本
         targetSdk 28           // 保持 28：高 target 在 4.4 上会有存储/明文流量限制问题
-        versionCode 2
-        versionName "1.1.0"
+        versionCode 3
+        versionName "1.2.0"
         // RK3229 = 四核 Cortex-A7（ARMv7-A，32 位），只保留 32 位 ABI，包体更小
         ndk { abiFilters "armeabi", "armeabi-v7a" }
         multiDexEnabled true

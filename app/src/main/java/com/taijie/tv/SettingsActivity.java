@@ -1,13 +1,14 @@
 package com.taijie.tv;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.preference.Preference;
 import androidx.preference.ListPreference;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreference;
@@ -33,10 +34,25 @@ public class SettingsActivity extends AppCompatActivity {
 
             Preference core = findPreference("core_info");
             if (core != null) {
-                boolean x5 = prefs.getBoolean("use_x5", true) && com.tencent.smtt.sdk.QbSdk.canLoadX5(getContext());
-                core.setSummary(x5
-                        ? "腾讯 X5 " + com.tencent.smtt.sdk.QbSdk.getTbsVersion(getContext())
-                        : "系统 WebView（可能无法播放）");
+                core.setSummary(TvApp.coreInfo(getContext()));
+            }
+
+            Preference retry = findPreference("retry_core");
+            if (retry != null) {
+                retry.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                    @Override
+                    public boolean onPreferenceClick(Preference preference) {
+                        TvApp.resetInstallAttempt(getContext());
+                        Toast.makeText(getContext(), "即将重启并重新安装内核", Toast.LENGTH_SHORT).show();
+                        Intent it = new Intent(getContext(), BootActivity.class);
+                        it.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(it);
+                        if (getActivity() != null) {
+                            getActivity().finish();
+                        }
+                        return true;
+                    }
+                });
             }
 
             Preference device = findPreference("device_info");
