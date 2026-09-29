@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- 央视网 / 央视频均为 https，此处仅放行内核分发域名的明文下载 -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">void-tech.cn</domain>
+    </domain-config>
+</network-security-config>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="text_size">
+        <item>小 18sp</item>
+        <item>标准 22sp</item>
+        <item>大 26sp</item>
+        <item>特大 30sp</item>
+    </string-array>
+    <string-array name="text_size_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="quality">
+        <item>自动（跟随网页）</item>
+        <item>流畅 360P</item>
+        <item>标清 480P（默认，弱机推荐）</item>
+        <item>高清 720P</item>
+        <item>超清 1080P</item>
+    </string-array>
+    <string-array name="quality_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#FF0B0B0B</color>
+    <color name="drawer_bg">#E6000000</color>
+    <color name="tab_normal">#00000000</color>
+    <color name="tab_focused">#FF1E6FD9</color>
+    <color name="settings_bg">#FF141414</color>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">泰捷电视直播</string>
+    <string name="title_settings">设置</string>
+    <string name="tab_cctv">央视频道</string>
+    <string name="tab_local">地方频道</string>
+    <string name="menu_refresh">刷新</string>
+    <string name="menu_play">播放/暂停</string>
+    <string name="menu_full">全屏</string>
+    <string name="menu_quality">清晰度</string>
+    <string name="hint_exit">再按一次返回键退出</string>
+    <string name="hint_loading">正在加载</string>
+    <string name="hint_switch">换台：</string>
+</resources>

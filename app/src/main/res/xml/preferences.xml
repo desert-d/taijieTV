@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="播放内核">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="use_x5"
+            android:summary="关闭后将使用系统 WebView（4.4 自带内核多半无法播放，不建议关闭）"
+            android:title="使用腾讯 X5 内核" />
+
+        <Preference
+            android:key="core_info"
+            android:summary="--"
+            android:title="当前内核" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="画质">
+
+        <ListPreference
+            android:defaultValue="2"
+            android:entries="@array/quality"
+            android:entryValues="@array/quality_values"
+            android:key="quality"
+            android:summary="央视网取 480P 档，央视频最低档为 540P；弱机与百兆网口建议标清"
+            android:title="默认清晰度" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="操作">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="direct_change"
+            android:summary="开启后按上下键立即切台；关闭时上下键先打开换台列表"
+            android:title="上下键直接换台" />
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/text_size"
+            android:entryValues="@array/text_size_values"
+            android:key="text_size"
+            android:summary="换台列表字号"
+            android:title="列表字体大小" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="关于">
+
+        <Preference
+            android:key="device_info"
+            android:summary="--"
+            android:title="设备信息" />
+
+        <Preference
+            android:key="version"
+            android:summary="1.1.0"
+            android:title="版本" />
+
+        <Preference
+            android:key="source"
+            android:summary="央视频 yangshipin.cn / 央视网 tv.cctv.com"
+            android:title="节目源" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

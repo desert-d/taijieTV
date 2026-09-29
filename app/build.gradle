@@ -1,0 +1,57 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.taijie.tv'
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.taijie.tv"
+        minSdk 19              // Android 4.4.4 = API 19，WE30C 的系统版本
+        targetSdk 28           // 保持 28：高 target 在 4.4 上会有存储/明文流量限制问题
+        versionCode 2
+        versionName "1.1.0"
+        // RK3229 = 四核 Cortex-A7（ARMv7-A，32 位），只保留 32 位 ABI，包体更小
+        ndk { abiFilters "armeabi", "armeabi-v7a" }
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        encoding = 'UTF-8'   // 源码与 XML 含中文，防止 Windows(GBK) 下编译乱码
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    // 输出固定文件名，方便拷到 U 盘
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            output.outputFileName = "泰捷电视直播_v${variant.versionName}.apk"
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'androidx.preference:preference:1.2.1'
+    implementation 'androidx.leanback:leanback:1.0.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    // 腾讯 X5（TBS）内核：4.4 的 Chromium 33 放不出央视网/央视频的 H5 播放器，必须靠它
+    implementation files('libs/tbs_sdk_thirdapp_v4.3.0.253_44153_sharewithdownloadwithfile_withoutGame_obfs_20220117_105333.jar')
+}
